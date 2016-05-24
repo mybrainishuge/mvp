@@ -7,7 +7,6 @@ angular.module('client', [])
 
   $scope.submit = (question, answer) => {
     if (question !== '' && question !== undefined && answer !== '' && answer !== undefined) {
-
       $scope.QA = {
         question: $scope.question,
         answer: $scope.answer
@@ -27,7 +26,10 @@ angular.module('client', [])
     .then(data => {
       $scope.questions = data.questions;
       $scope.answers = data.answers;
-      $scope.end = true;
+
+      if ($scope.questions.length && $scope.answers.length) {
+        $scope.end = true;
+      }
     });
 
   };
@@ -46,38 +48,28 @@ angular.module('client', [])
 .factory('Subs', ($http) => {
 
   const sendQA = data => {
-    console.log('inside sendQA:', data);
     return $http({
       method: 'POST',
       url: '/send',
-      data: data
+      data: JSON.stringify(data)
     })
-    .then(resp => {
-      console.log('sendQA resp:', resp);
-    });
+    .then(resp => resp);
   };
 
   const getResults = () => {
-    console.log('inside getResults');
     return $http({
       method: 'GET',
       url: '/get'
     })
-    .then(resp => {
-      console.log('getResults resp:', resp);
-    });
+    .then(resp => resp.data);
   };
 
   const newGame = () => {
-    console.log('inside newGame');
     return $http({
       method: 'POST',
       url: '/new'
-      // clear questions and answers
     })
-    .then(resp => {
-      console.log('newGame resp:', resp);
-    });
+    .then(resp => resp);
   };
 
   return {

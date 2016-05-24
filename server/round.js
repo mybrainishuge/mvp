@@ -1,5 +1,3 @@
-// write methods to manipulate data
-// these will be called from routes depending on the incoming ajax call
 const _ = require('underscore');
 
 const QA = {
@@ -18,26 +16,30 @@ module.exports = {
       data += chunk;
     });
 
-    console.log('inside importQA:', data);
-    // QA.questions.push(req.body.question);
-    // QA.answers.push(req.body.answer);
-    next();
+    req.on('end', () => {
+      data = JSON.parse(data);
+      QA.questions.push(data.question);
+      QA.answers.push(data.answer);
+      res.sendStatus(201);
+      next();
+    });
   },
+
 
   newGame: (req, res, next) => {
-    console.log('inside newGame');
     QA.questions = [];
     QA.answers = [];
+    res.sendStatus(201);
     next();
   },
 
+
   sendResults: (req, res, next) => {
-    // console.log('inside sendResults:', data);
-
-    // QA.questions = _.shuffle(QA.questions);
-    // QA.answers = _.shuffle(QA.answers);
-
-    next(QA);
+    // shuffle questions and answers
+    QA.questions = _.shuffle(QA.questions);
+    QA.answers = _.shuffle(QA.answers);
+    res.status(201).send(JSON.stringify(QA));
+    next();
   }
 
 };

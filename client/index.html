@@ -13,6 +13,7 @@
 
     <form novalidate>
       <div>What is... <input ng-model="question" ng-minlength='1' ng-required='true' placeholder="Type a question..."></div>
+
       <div>It is... <input ng-model="answer" ng-minlength='1' ng-required='true' placeholder="Type an answer..."></div>
 
       <button ng-click="submit(question, answer)">Submit</button>
