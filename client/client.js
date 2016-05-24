@@ -3,12 +3,10 @@ angular.module('client', [])
 .controller('ClientController', ($scope, Subs) => {
   $scope.questions = [];
   $scope.answers = [];
-  $scope.reset = false;
+  $scope.end = false;
 
   $scope.submit = (question, answer) => {
     if (question !== '' && question !== undefined && answer !== '' && answer !== undefined) {
-      // $scope.questions.push(question);
-      // $scope.answers.push(answer);
 
       $scope.QA = {
         question: $scope.question,
@@ -17,26 +15,19 @@ angular.module('client', [])
 
       Subs.sendQA($scope.QA)
       .then(data => {
-        // $scope.questions = data.questions;
-        // $scope.answers = data.answers;
         $scope.question = '';
         $scope.answer = '';
-        $scope.reset = false;
+        $scope.end = false;
       });
     }
   };
 
   $scope.results = () => {
-    // $scope.questions = _.shuffle($scope.questions);
-    // $scope.answers = _.shuffle($scope.answers);
     Subs.getResults()
     .then(data => {
       $scope.questions = data.questions;
       $scope.answers = data.answers;
-
-      if ($scope.questions.length && $scope.answers.length) {
-        $scope.reset = true;
-      }
+      $scope.end = true;
     });
 
   };
@@ -46,7 +37,7 @@ angular.module('client', [])
     .then(data => {
       $scope.questions = [];
       $scope.answers = [];
-      $scope.reset = false;
+      $scope.end = false;
     });
   };
 
@@ -55,29 +46,38 @@ angular.module('client', [])
 .factory('Subs', ($http) => {
 
   const sendQA = data => {
+    console.log('inside sendQA:', data);
     return $http({
       method: 'POST',
       url: '/send',
       data: data
     })
-    .then(resp => resp);
+    .then(resp => {
+      console.log('sendQA resp:', resp);
+    });
   };
 
   const getResults = () => {
+    console.log('inside getResults');
     return $http({
       method: 'GET',
       url: '/get'
     })
-    .then(resp => resp.data);
+    .then(resp => {
+      console.log('getResults resp:', resp);
+    });
   };
 
   const newGame = () => {
+    console.log('inside newGame');
     return $http({
       method: 'POST',
       url: '/new'
       // clear questions and answers
     })
-    .then(resp => resp);
+    .then(resp => {
+      console.log('newGame resp:', resp);
+    });
   };
 
   return {
