@@ -1,0 +1,18 @@
+User is presented with a page for submitting questions
+and answers.
+
+Can't submit an answer without submitting a question
+and vice versa (required fields).
+
+Once all users have submitted questions and answers,
+answers are randomly associated with questions and
+returned to players.
+
+Each player reads the question and answer returned to them.
+
+Needs:
+Storage for questions
+Storage for answers
+Handle sessions to track number of players
+Jumble questions with answers
+

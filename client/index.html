@@ -3,19 +3,20 @@
 
   <head>
     <title>What Is - It Is</title>
-    <script src="client/lib/angular/angular.js"></script>
-    <script src="client/lib/underscore/underscore.js"></script>
-    <script src="client/client.js"></script>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/underscore/underscore-min.js"></script>
+    <script src="client.js"></script>
   </head>
 
   <body ng-app="client" ng-controller="ClientController">
     <h1>What Is - It Is</h1>
 
     <form novalidate>
-      <div>What is...<input ng-model="question" ng-minlength='1' ng-required='true' placeholder="Type a question..."></div>
-      <div>It is...<input ng-model="answer" ng-minlength='1' ng-required='true' placeholder="Type an answer..."></div>
+      <div>What is... <input ng-model="question" ng-minlength='1' ng-required='true' placeholder="Type a question..."></div>
+      <div>It is... <input ng-model="answer" ng-minlength='1' ng-required='true' placeholder="Type an answer..."></div>
+
       <button ng-click="submit(question, answer)">Submit</button>
-      <button ng-click="returnResults()">Answers</button>
+      <button ng-click="results()">Answers</button>
       <button ng-click="reset()">Reset</button>
     </form>
 

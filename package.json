@@ -2,12 +2,13 @@
   "name": "what-is-it-is",
   "version": "1.0.0",
   "description": "A game for the bored at heart",
-  "author": "Richard May<richardamay@gmail.com>",
+  "author": "Richard May <richardamay@gmail.com>",
   "license": "UNLICENSED",
   "private": true,
   "scripts": {},
   "dependencies": {
     "angular": "^1.5.5",
+    "express": "^4.13.4",
     "underscore": "^1.8.3"
   },
   "devDependencies": {}

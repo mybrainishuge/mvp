@@ -1,0 +1,19 @@
+{
+  "name": "what-is-it-is",
+  "version": "1.0.0",
+  "authors": [
+    "Richard May <richardamay.com>"
+  ],
+  "license": "UNLICENSED",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/lib"
+  ],
+  "dependencies": {
+    "angular": "^1.5.5",
+    "underscore": "^1.8.3"
+  }
+}
