@@ -5,26 +5,28 @@ angular.module('client', [])
   $scope.end = false;
 
   $scope.submit = function(question, answer) {
-    if (question === undefined || answer === undefined) {
-      return;
+    if (question !== '' && question !== undefined && answer !== '' && answer !== undefined) {
+      $scope.questions.push(question);
+      $scope.answers.push(answer);
+      $scope.question = '';
+      $scope.answer = '';
+      $scope.end = false;
     }
-    console.log('inside submit');
-    $scope.questions.push(question);
-    $scope.answers.push(answer);
-    console.log($scope.questions);
-    console.log($scope.answers);
-    $scope.question = '';
-    $scope.answer = '';
-    $scope.end = false;
   };
 
   $scope.returnResults = function() {
-    console.log('inside returnResults');
     $scope.questions = _.shuffle($scope.questions);
     $scope.answers = _.shuffle($scope.answers);
-    console.log($scope.questions);
-    console.log($scope.answers);
-    $scope.end = true;
+    if ($scope.questions.length && $scope.answers.length) {
+      $scope.end = true;
+    }
+    console.log('inside results:', $scope.end);
+  };
+
+  $scope.reset = function() {
+    $scope.questions = [];
+    $scope.answers = [];
+    $scope.end = false;
   };
 
 }]);
