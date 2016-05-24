@@ -1,5 +1,7 @@
 // write methods to manipulate data
 // these will be called from routes depending on the incoming ajax call
+var _ = require('underscore');
+
 const QA = {
   questions: [],
   answers: []
@@ -9,8 +11,8 @@ let reset = false;
 
 module.exports = {
 
-  addQA: (req, res, next) => {
-    QA.questions.push(req.body.questions);
+  importQA: (req, res, next) => {
+    QA.questions.push(req.body.question);
     QA.answers.push(req.body.answer);
     next();
   },

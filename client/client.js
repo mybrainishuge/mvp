@@ -57,7 +57,7 @@ angular.module('client', [])
   const sendQA = data => {
     return $http({
       method: 'POST',
-      url: '/',
+      url: '/send',
       data: data
     })
     .then(resp => resp);
@@ -66,7 +66,7 @@ angular.module('client', [])
   const getResults = () => {
     return $http({
       method: 'GET',
-      url: '/'
+      url: '/get'
     })
     .then(resp => resp.data);
   };
@@ -74,7 +74,7 @@ angular.module('client', [])
   const newGame = () => {
     return $http({
       method: 'POST',
-      url: '/'
+      url: '/new'
       // clear questions and answers
     })
     .then(resp => resp);
