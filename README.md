@@ -13,7 +13,7 @@
 
 > "I didn't know how to communicate with my family until we played What is-It is." --Richard
 
-> "I didn't know how to communicate with Richard's family until we played What is-It is." --Richard's future wife
+> "I didn't know how to communicate with Richard until we played What is-It is." --Richard's future wife
 
 ### How to Get Started ###
 1. Grab any number of friends and have each write a question.
