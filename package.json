@@ -2,11 +2,12 @@
   "name": "what-is-it-is",
   "version": "1.0.0",
   "description": "A game for the bored at heart",
-  "main": "server/server.js"
-  "author": "Richard",
+  "main": "server/server.js",
   "license": "UNLICENSED",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "start": "node server/server.js"
+  },
   "dependencies": {
     "angular": "^1.5.5",
     "express": "^4.13.4",

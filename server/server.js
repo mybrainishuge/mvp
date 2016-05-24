@@ -3,7 +3,6 @@ const app = express();
 const round = require('./round.js');
 const session = require('express-session');
 
-// require('./routes.js')(app, express);
 app.set('port', process.env.PORT || 3000);
 app.use(express.static(__dirname + '/../client'));
 
