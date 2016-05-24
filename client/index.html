@@ -3,27 +3,46 @@
 
   <head>
     <title>What Is - It Is</title>
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
     <script src="lib/angular/angular.min.js"></script>
     <script src="lib/underscore/underscore-min.js"></script>
+    <script src="lib/xss/dist/xss.min.js"></script>
     <script src="client.js"></script>
   </head>
 
   <body ng-app="client" ng-controller="ClientController">
-    <h1>What Is - It Is</h1>
+    <div class="container">
+      <div class="row">
 
-    <form novalidate>
-      <div>What is... <input ng-model="question" ng-minlength='1' ng-required='true' placeholder="Type a question..."></div>
+        <!-- TITLE -->
+        <div class="col-xs-12">
+          <h1 class="text-center title">What Is - It Is</h1>
+        </div>
 
-      <div>It is... <input ng-model="answer" ng-minlength='1' ng-required='true' placeholder="Type an answer..."></div>
+        <div class="col-xs-12">
+          <form novalidate class="interface">
+            <div>What is... </div>
+            <input ng-model="question" ng-minlength='1' ng-required='true' placeholder="Type a question...">
 
-      <button ng-click="submit(question, answer)">Submit</button>
-      <button ng-click="results()">Answers</button>
-      <button ng-click="reset()">Reset</button>
-    </form>
+            <div>It is... </div>
+            <input ng-model="answer" ng-minlength='1' ng-required='true' placeholder="Type an answer...">
 
-    <div ng-show="end">
-      <h4>Results:</h4>
-      <div ng-repeat="q in questions track by $index">What is {{ q }} <br>It is {{ answers[$index] }}</div>
+            <div>
+              <button ng-click="submit(question, answer)">Submit</button>
+              <button ng-click="results()">Answers</button>
+              <button ng-click="reset()">New Game</button>
+            </div>
+          </form>
+        </div>
+
+        <div ng-show="end">
+          <h4>Results:</h4>
+          <div ng-repeat="q in questions track by $index">What is {{ q }} <br>It is {{ answers[$index] }}</div>
+        </div>
+
+      </div>
     </div>
 
   </body>

@@ -8,8 +8,8 @@ angular.module('client', [])
   $scope.submit = (question, answer) => {
     if (question !== '' && question !== undefined && answer !== '' && answer !== undefined) {
       $scope.QA = {
-        question: $scope.question,
-        answer: $scope.answer
+        question: filterXSS($scope.question),
+        answer: filterXSS($scope.answer)
       };
 
       Subs.sendQA($scope.QA)
