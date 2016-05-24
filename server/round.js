@@ -5,7 +5,7 @@ const QA = {
   answers: []
 };
 
-let reset = false;
+let shuffled = false;
 
 module.exports = {
 
@@ -29,15 +29,19 @@ module.exports = {
   newGame: (req, res, next) => {
     QA.questions = [];
     QA.answers = [];
+    shuffled = false;
     res.sendStatus(201);
     next();
   },
 
 
   sendResults: (req, res, next) => {
-    // shuffle questions and answers
-    QA.questions = _.shuffle(QA.questions);
-    QA.answers = _.shuffle(QA.answers);
+    console.log('shuffled:', shuffled);
+    if (!shuffled) {
+      QA.questions = _.shuffle(QA.questions);
+      QA.answers = _.shuffle(QA.answers);
+      shuffled = true;
+    }
     res.status(201).send(JSON.stringify(QA));
     next();
   }

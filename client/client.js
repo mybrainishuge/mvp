@@ -6,7 +6,7 @@ angular.module('client', [])
   $scope.end = false;
 
   $scope.submit = (question, answer) => {
-    if (question !== '' && question !== undefined && answer !== '' && answer !== undefined) {
+    if (!$scope.end && question !== '' && question !== undefined && answer !== '' && answer !== undefined) {
       $scope.QA = {
         question: filterXSS($scope.question),
         answer: filterXSS($scope.answer)
@@ -22,16 +22,17 @@ angular.module('client', [])
   };
 
   $scope.results = () => {
-    Subs.getResults()
-    .then(data => {
-      $scope.questions = data.questions;
-      $scope.answers = data.answers;
+    if (!$scope.end) {
+      Subs.getResults()
+      .then(data => {
+        $scope.questions = data.questions;
+        $scope.answers = data.answers;
 
-      if ($scope.questions.length && $scope.answers.length) {
-        $scope.end = true;
-      }
-    });
-
+        if ($scope.questions.length && $scope.answers.length) {
+          $scope.end = true;
+        }
+      });
+    }
   };
 
   $scope.reset = () => {
