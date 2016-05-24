@@ -5,10 +5,10 @@
 
 > The rules are simple:  Ask a random question, get a random answer, laugh, repeat.  Each player asks a question starting with "What is..." and submits it to the pool anonymously.  Once all players have submitted questions, each player submits an unrelated answer starting with "It is..." and submits it to the pool anonymously.  Answers are randomly assigned to questions and then read aloud for amusement and/or bemusement.
 
-### Problem ###
+### Problem: ###
 - Boredom is often the result of not knowing how to stimulate creativity.
 
-### Solution ###
+### Solution: ###
 - What is-It is provides a terribly simple platform for stimulating creativity by interacting with friends through randomness.
 
 > "I didn't know how to communicate with my family until we played What is-It is." --Richard
