@@ -1,11 +1,11 @@
-angular.module('client', [])
+angular.module('client', ['client.services'])
 
-.controller('ClientController', ['$scope', function($scope) {
+.controller('ClientController', ['$scope', ($scope) => {
   $scope.questions = [];
   $scope.answers = [];
   $scope.end = false;
 
-  $scope.submit = function(question, answer) {
+  $scope.submit = (question, answer) => {
     if (question !== '' && question !== undefined && answer !== '' && answer !== undefined) {
       $scope.questions.push(question);
       $scope.answers.push(answer);
@@ -15,7 +15,7 @@ angular.module('client', [])
     }
   };
 
-  $scope.results = function() {
+  $scope.results = () => {
     $scope.questions = _.shuffle($scope.questions);
     $scope.answers = _.shuffle($scope.answers);
     if ($scope.questions.length && $scope.answers.length) {
@@ -23,7 +23,7 @@ angular.module('client', [])
     }
   };
 
-  $scope.reset = function() {
+  $scope.reset = () => {
     $scope.questions = [];
     $scope.answers = [];
     $scope.end = false;
